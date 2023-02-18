@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+           background-image: url(./pexels-alexander-grey-842682.jpg);
+            background-size: 100vw 100vh;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #container{
+            position: relative;
+            width: 35vw;
+            height: 65vh;
+            background-color: rgba(0, 0, 0, 0.486);
+            border-radius: 2%;
+            box-shadow: 5px 5px 5px rgb(240, 8, 147);
+        }
+        #display{
+            width: 75%;
+            height: 30px;
+            position: absolute;
+            top: 5%;
+            left: 9%;
+            background-color: black;
+            color: white;
+            font-size: 25px;
+            padding: 5px;
+            outline: none;
+            border: groove 10px gray;
+            box-shadow: 2px 2px 5px black;
+        }
+        .a{
+            top: 15vh;
+            left: 5vw;
+            margin-top: 20px;
+            position: relative;
+            width: 15%;
+            height: 6vh;
+            background-color: black;
+            color: red;
+            font-size: 24px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px black;
+            border: 2px solid white;
+            padding-left: 5px;
+        }
+        #clear{
+            position: absolute;
+            bottom: 30px;
+            width: 25%;
+            height: 6vh;
+            font-size: 24px;
+            left: 6vw;
+            background-color: rgba(255, 0, 0, 0.351);
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px black;
+        }
+        #equ{
+            position: absolute;
+            bottom: 30px;
+            width: 25%;
+            height: 6vh;
+            font-size: 24px;
+            left: 17vw;
+            background-color: rgba(255, 0, 0, 0.351);
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <form id="cform">
+        <input name="Ans" id="display">
+        <br>
+        <input class="a"       onmousedown="clickone()"         onmouseup="asusual()"    id="one"             type="button" value="1"              onclick="cform.Ans.value +='1'">
+        <input class="a"       onmousedown="clicktwo()"         onmouseup="asusual()"    id="two"             type="button" value="2"              onclick="cform.Ans.value +='2'">
+        <input class="a"       onmousedown="clickthree()"       onmouseup="asusual()"    id="three"           type="button" value="3"              onclick="cform.Ans.value +='3'">
+        <input class="a"       onmousedown="clickplus()"        onmouseup="asusual()"    id="plus"            type="button" value="+"              onclick="cform.Ans.value +='+'">
+        <br>               
+        <input class="a"       onmousedown="clickfour()"        onmouseup="asusual()"    id="four"            type="button" value="4"              onclick="cform.Ans.value +='4'">
+        <input class="a"       onmousedown="clickfive()"        onmouseup="asusual()"    id="five"            type="button" value="5"              onclick="cform.Ans.value +='5'">
+        <input class="a"       onmousedown="clicksix()"         onmouseup="asusual()"    id="six"             type="button" value="6"              onclick="cform.Ans.value +='6'">
+        <input class="a"       onmousedown="clickminus()"       onmouseup="asusual()"    id="minus"           type="button" value="-"              onclick="cform.Ans.value +='-'">
+        <br>               
+        <input class="a"       onmousedown="clickseven()"       onmouseup="asusual()"    id="seven"            type="button" value="7"              onclick="cform.Ans.value +='7'">
+        <input class="a"       onmousedown="clickeight()"       onmouseup="asusual()"    id="eight"            type="button" value="8"              onclick="cform.Ans.value +='8'">
+        <input class="a"       onmousedown="clicknine()"        onmouseup="asusual()"    id="nine"             type="button" value="9"              onclick="cform.Ans.value +='9'">
+        <input class="a"       onmousedown="clickmultiply()"    onmouseup="asusual()"    id="multiply"         type="button" value="X"              onclick="cform.Ans.value +='*'">
+        <br>               
+        <input class="a"       onmousedown="clickmodulus()"     onmouseup="asusual()"    id="modulus"          type="button" value="%"              onclick="cform.Ans.value +='%'">
+        <input class="a"       onmousedown="clickzero()"        onmouseup="asusual()"    id="zero"             type="button" value="0"              onclick="cform.Ans.value +='0'">
+        <input class="a"       onmousedown="clickdot()"         onmouseup="asusual()"    id="dot"              type="button" value="."              onclick="cform.Ans.value +='.'">
+        <input class="a"       onmousedown="clickslash()"       onmouseup="asusual()"    id="slash"            type="button" value="/"              onclick="cform.Ans.value +='/'">
+        <br>
+        <input type="button"   onmousedown="buttons()"         id="equ"       value="=" onclick="cform.Ans.value =eval(cform.Ans.value)">
+        <input type="button"   onmousedown="buttons()"         value="C"      id="clear"      onclick="cform.Ans.value =' '">
+    </form>
+    
+</div>
+<script>
+
+function buttons()
+    {
+        var btn=new Audio()
+        btn.src="./rclick-13693.mp3"
+        btn.play()
+    }
+
+    function clickone()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("one").style.backgroundColor="red"
+    }
+
+    function clicktwo()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("two").style.backgroundColor="red"
+
+    }
+    function clickthree()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("three").style.backgroundColor="pink"
+
+    }
+    function clickfour()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("four").style.backgroundColor="blue"
+
+    }
+    function clickfive()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("five").style.backgroundColor="skyblue"
+    }
+    function clicksix()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("six").style.backgroundColor="hotpink"
+    }
+    function clickseven()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("seven").style.backgroundColor="gray"
+    }
+    function clickeight()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("eight").style.backgroundColor="orange"
+    }
+    function clicknine()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("nine").style.backgroundColor="lime"
+    }
+
+    function clickplus()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("plus").style.backgroundColor="green"
+    }
+
+    function clickminus()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("minus").style.backgroundColor="pink"
+    }
+    function clickmultiply()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("multiply").style.backgroundColor="orange"
+    }
+    function clickmodulus()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("modulus").style.backgroundColor="blue"
+    }
+    function clickzero()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("zero").style.backgroundColor="grey"
+    }
+    function clickdot()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("dot").style.backgroundColor="lightgreen"
+    }
+    function clickslash()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("slash").style.backgroundColor="pink"
+    }
+    function clickequ()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("equ").style.backgroundColor="yellow"
+    }
+    function clickclear()
+    {
+        var clksound=new Audio()
+        clksound.src="./rclick-13693.mp3"
+        clksound.play()
+        document.getElementById("clear").style.backgroundColor="black"
+    }
+
+    function asusual()
+    {
+        document.getElementById("one").style.backgroundColor="black"
+        document.getElementById("two").style.backgroundColor="black"
+        document.getElementById("three").style.backgroundColor="black"
+        document.getElementById("four").style.backgroundColor="black"
+        document.getElementById("five").style.backgroundColor="black"
+        document.getElementById("six").style.backgroundColor="black"
+        document.getElementById("seven").style.backgroundColor="black"
+        document.getElementById("eight").style.backgroundColor="black"
+        document.getElementById("nine").style.backgroundColor="black"
+        document.getElementById("plus").style.backgroundColor="black"
+        document.getElementById("minus").style.backgroundColor="black"
+        document.getElementById("multiply").style.backgroundColor="black"
+        document.getElementById("modulus").style.backgroundColor="black"
+        document.getElementById("slash").style.backgroundColor="black"
+        document.getElementById("dot").style.backgroundColor="black"
+        document.getElementById("zero").style.backgroundColor="black"
+        document.getElementById("").style.backgroundColor="black"
+    }
+
+
+
+
+
+
+
+
+
+
+
+    
+</script>
+</body>
+</html>
